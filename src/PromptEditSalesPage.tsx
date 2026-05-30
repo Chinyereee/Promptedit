@@ -134,40 +134,113 @@ const PromptEditSalesPage: React.FC = () => {
     window.location.href = 'https://promptedit.com';
   };
 
+  const HeroIllustration = () => (
+    <svg viewBox="0 0 500 350" style={{ width: '100%', maxWidth: '500px', margin: '0 auto', display: 'block' }}>
+      {/* LEFT SIDE - CHAOTIC (Before) */}
+      <g>
+        {/* "BEFORE" label */}
+        <text x="80" y="25" fontSize="14" fontWeight="bold" fill="#0f1113" textAnchor="middle">Before: Chaos</text>
+        
+        {/* Messy subscription boxes - overlapping and chaotic */}
+        <rect x="20" y="45" width="65" height="55" rx="6" fill="#E50914" opacity="0.7" />
+        <text x="52.5" y="77" fontSize="10" fontWeight="bold" fill="white" textAnchor="middle">HeyGen</text>
+        
+        <rect x="55" y="65" width="65" height="55" rx="6" fill="#9B59B6" opacity="0.7" />
+        <text x="87.5" y="97" fontSize="10" fontWeight="bold" fill="white" textAnchor="middle">Suno</text>
+        
+        <rect x="90" y="50" width="65" height="55" rx="6" fill="#1f77b4" opacity="0.7" />
+        <text x="122.5" y="82" fontSize="10" fontWeight="bold" fill="white" textAnchor="middle">Veo</text>
+        
+        <rect x="35" y="110" width="65" height="55" rx="6" fill="#FF6B6B" opacity="0.7" />
+        <text x="67.5" y="142" fontSize="10" fontWeight="bold" fill="white" textAnchor="middle">ElevenLabs</text>
+        
+        <rect x="105" y="120" width="65" height="55" rx="6" fill="#00D4FF" opacity="0.7" />
+        <text x="137.5" y="152" fontSize="10" fontWeight="bold" fill="white" textAnchor="middle">Ideogram</text>
+        
+        {/* Dollar signs - scattered and alarming */}
+        <g fontSize="28" fill="#FF6B6B" fontWeight="bold" opacity="0.9">
+          <text x="10" y="95">$</text>
+          <text x="155" y="95">$</text>
+          <text x="50" y="170">$</text>
+          <text x="130" y="185">$</text>
+        </g>
+        
+        {/* Confused emoji */}
+        <text x="80" y="240" fontSize="40" textAnchor="middle">😵</text>
+        <text x="80" y="265" fontSize="12" fontWeight="600" fill="#0f1113" textAnchor="middle">$500+/month</text>
+      </g>
+      
+      {/* CENTER - VS ARROW */}
+      <g>
+        <line x1="210" y1="150" x2="290" y2="150" stroke="#f4a460" strokeWidth="2" markerEnd="url(#arrowhead)" />
+        <text x="250" y="145" fontSize="16" fontWeight="bold" fill="#f4a460" textAnchor="middle">→</text>
+      </g>
+      
+      {/* RIGHT SIDE - UNIFIED (After) */}
+      <g>
+        {/* "AFTER" label */}
+        <text x="380" y="25" fontSize="14" fontWeight="bold" fill="#0f1113" textAnchor="middle">After: PromptEdit</text>
+        
+        {/* Single unified platform */}
+        <rect x="310" y="50" width="140" height="140" rx="12" fill="#f4a460" opacity="0.1" stroke="#f4a460" strokeWidth="2" strokeDasharray="5,5" />
+        
+        {/* All tools inside one box */}
+        <g fontSize="9" fontWeight="bold" fill="#0f1113">
+          <text x="325" y="75">🎨 HeyGen</text>
+          <text x="325" y="95">🎬 Suno</text>
+          <text x="325" y="115">🎙️ Veo</text>
+          <text x="325" y="135">🔊 ElevenLabs</text>
+          
+          <text x="395" y="75">✨ Ideogram</text>
+          <text x="395" y="95">🎨 DALL-E</text>
+          <text x="395" y="115">🎯 Grok</text>
+          <text x="395" y="135">+ 23 more...</text>
+        </g>
+        
+        {/* Single price tag */}
+        <g>
+          <rect x="330" y="200" width="100" height="40" rx="6" fill="#f4a460" opacity="0.2" stroke="#f4a460" strokeWidth="1.5" />
+          <text x="380" y="220" fontSize="16" fontWeight="bold" fill="#f4a460" textAnchor="middle">$39</text>
+          <text x="380" y="233" fontSize="9" fill="#0f1113" textAnchor="middle">/month</text>
+        </g>
+        
+        {/* Happy emoji */}
+        <text x="380" y="295" fontSize="40" textAnchor="middle">😊</text>
+        <text x="380" y="320" fontSize="12" fontWeight="600" fill="#0f1113" textAnchor="middle">One Login. All Tools.</text>
+      </g>
+      
+      {/* Arrow marker definition */}
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <polygon points="0 0, 10 3, 0 6" fill="#f4a460" />
+        </marker>
+      </defs>
+    </svg>
+  );
+
   const styles = `
     :root {
-      /* ==========================================================================
-         1. COLOR PRIMITIVES (The Minimalist Canvas)
-         ========================================================================== */
       --color-pure-white: #ffffff;
       --color-off-white: #f8f9fa;
       --color-platinum: #f1f3f5;
       --color-slate-200: #e9ecef;
       --color-slate-800: #1a1d20;
       --color-ink-black: #0f1113;
-      
-      /* Amber/Sand Accent (Judiciously used for highlights/micro-actions) */
       --color-amber-gold: #f4a460;
       --color-amber-hover: #e0924f;
       
-      /* ==========================================================================
-         2. SEMANTIC TOKENS (Light Mode Default)
-         ========================================================================== */
       --bg-main: var(--color-off-white);
       --bg-card: var(--color-pure-white);
       --bg-card-hover: var(--color-platinum);
       
-      /* Typography */
       --text-primary: var(--color-ink-black);
       --text-secondary: #5c6370;
       --text-accent: var(--color-ink-black);
       
-      /* Interactive Elements */
       --action-bg: var(--color-ink-black);
       --action-bg-hover: var(--color-slate-800);
       --action-text: var(--color-pure-white);
       
-      /* Borders & Dividers */
       --border-subtle: var(--color-slate-200);
     }
 
@@ -201,6 +274,29 @@ const PromptEditSalesPage: React.FC = () => {
       color: var(--text-primary);
       background: var(--bg-main);
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ===== BACKGROUND PATTERN ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(244, 164, 96, 0.05) 25%, rgba(244, 164, 96, 0.05) 26%, transparent 27%, transparent 74%, rgba(244, 164, 96, 0.05) 75%, rgba(244, 164, 96, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(244, 164, 96, 0.05) 25%, rgba(244, 164, 96, 0.05) 26%, transparent 27%, transparent 74%, rgba(244, 164, 96, 0.05) 75%, rgba(244, 164, 96, 0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sales-page {
+      position: relative;
+      z-index: 2;
     }
 
     .container {
@@ -209,9 +305,6 @@ const PromptEditSalesPage: React.FC = () => {
       padding: 0 20px;
     }
 
-    /* ==========================================================================
-       HEADER
-       ========================================================================== */
     header {
       padding: 24px 0;
       border-bottom: 1px solid var(--border-subtle);
@@ -225,9 +318,6 @@ const PromptEditSalesPage: React.FC = () => {
       color: var(--text-accent);
     }
 
-    /* ==========================================================================
-       HERO SECTION
-       ========================================================================== */
     .hero-card {
       background-color: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -235,10 +325,16 @@ const PromptEditSalesPage: React.FC = () => {
       padding: 60px 40px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
       margin-bottom: 60px;
-      text-align: center;
     }
 
-    .hero-card h1 {
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
       color: var(--text-accent);
       font-size: 2.5rem;
       letter-spacing: -0.03em;
@@ -247,16 +343,13 @@ const PromptEditSalesPage: React.FC = () => {
       margin-bottom: 16px;
     }
 
-    .hero-card .subheading {
+    .hero-text .subheading {
       color: var(--text-secondary);
       font-size: 1.125rem;
       line-height: 1.6;
       margin-bottom: 32px;
     }
 
-    /* ==========================================================================
-       BUTTONS
-       ========================================================================== */
     .btn-primary {
       background-color: var(--action-bg);
       color: var(--action-text);
@@ -296,9 +389,6 @@ const PromptEditSalesPage: React.FC = () => {
       background-color: var(--bg-card-hover);
     }
 
-    /* ==========================================================================
-       SECTION
-       ========================================================================== */
     .section {
       margin-bottom: 60px;
     }
@@ -335,9 +425,6 @@ const PromptEditSalesPage: React.FC = () => {
       margin-right: 8px;
     }
 
-    /* ==========================================================================
-       TESTIMONIAL BOX
-       ========================================================================== */
     .testimonial-box {
       background: var(--bg-card);
       padding: 24px;
@@ -361,9 +448,6 @@ const PromptEditSalesPage: React.FC = () => {
       font-style: normal;
     }
 
-    /* ==========================================================================
-       STEPS / HOW IT WORKS
-       ========================================================================== */
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -406,9 +490,6 @@ const PromptEditSalesPage: React.FC = () => {
       line-height: 1.5;
     }
 
-    /* ==========================================================================
-       PRICING CARDS
-       ========================================================================== */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -498,9 +579,6 @@ const PromptEditSalesPage: React.FC = () => {
       margin-right: 6px;
     }
 
-    /* ==========================================================================
-       GUARANTEE BOX
-       ========================================================================== */
     .guarantee {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -525,9 +603,6 @@ const PromptEditSalesPage: React.FC = () => {
       margin: 0;
     }
 
-    /* ==========================================================================
-       TOOLS LIST
-       ========================================================================== */
     .tools-list {
       display: grid;
       gap: 16px;
@@ -569,9 +644,6 @@ const PromptEditSalesPage: React.FC = () => {
       line-height: 1.5;
     }
 
-    /* ==========================================================================
-       TESTIMONIALS GRID
-       ========================================================================== */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -615,9 +687,6 @@ const PromptEditSalesPage: React.FC = () => {
       font-weight: 500;
     }
 
-    /* ==========================================================================
-       STATS
-       ========================================================================== */
     .stats {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -650,9 +719,6 @@ const PromptEditSalesPage: React.FC = () => {
       text-transform: uppercase;
     }
 
-    /* ==========================================================================
-       FINAL CTA
-       ========================================================================== */
     .final-cta {
       text-align: center;
       padding: 48px 0;
@@ -693,9 +759,6 @@ const PromptEditSalesPage: React.FC = () => {
       margin-top: 20px;
     }
 
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
     footer {
       text-align: center;
       padding: 32px 0;
@@ -715,15 +778,16 @@ const PromptEditSalesPage: React.FC = () => {
       color: var(--color-amber-hover);
     }
 
-    /* ==========================================================================
-       RESPONSIVE
-       ========================================================================== */
     @media (max-width: 768px) {
-      .hero-card h1 {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
         font-size: 1.875rem;
       }
 
-      .hero-card .subheading {
+      .hero-text .subheading {
         font-size: 1rem;
       }
 
@@ -767,6 +831,15 @@ const PromptEditSalesPage: React.FC = () => {
       .hero-card {
         padding: 40px 24px;
       }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-text h1 {
+        font-size: 1.875rem;
+      }
     }
   `;
 
@@ -782,9 +855,16 @@ const PromptEditSalesPage: React.FC = () => {
 
       <main className="container">
         <section className="hero-card">
-          <h1>Stop Paying $500/month for AI Tools You Barely Use</h1>
-          <p className="subheading">Access all the AI tools you need in one place. One login. One affordable price.</p>
-          <button className="btn-primary" onClick={handleCtaClick}>Start Creating Today</button>
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1>Stop Paying $500/month for AI Tools You Barely Use</h1>
+              <p className="subheading">Access all the AI tools you need in one place. One login. One affordable price.</p>
+              <button className="btn-primary" onClick={handleCtaClick}>Start Creating Today</button>
+            </div>
+            <div className="hero-image">
+              <HeroIllustration />
+            </div>
+          </div>
         </section>
 
         <section className="section">
